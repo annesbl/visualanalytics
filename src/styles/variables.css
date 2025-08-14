@@ -1,9 +1,9 @@
-/**
+ /**
  * Do not edit directly
  * Generated on Fri, 29 Oct 2021 15:49:30 GMT
  */
 
-:root {
+ :root {
   --base-off-black: #282828;
   --base-green-1: #79A695;
   --base-green-2: #A5F2D5;
@@ -12,7 +12,7 @@
   --base-red: #A64153;
   --base-purple-0: #220619;
   --base-purple-1: #390A29;
-  --base-purple-2: #440D31;
+  --color-bg: #F2E8DF;
   --base-purple-3: #591642;
   --base-orange-1: #D96666;
   --base-orange-2: #F29F80;

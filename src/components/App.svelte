@@ -3,7 +3,6 @@
   import Scrolly from "./helpers/Scrolly.svelte";
   import Screenshots from "./Screenshots.svelte";
   import Lenna from "./Lenna.svelte";
-  import BarChart from "./BarChart.svelte";
   import Conclusion from "./Conclusion.svelte";
   import Footer from "./Footer.svelte";
   import copy from "$data/doc.json";
@@ -68,7 +67,6 @@
       <Lenna pixels={lennaPixels} {step} />
     {/if}
 
-    <BarChart {step} bind:playboyDestination />
   </div>
 
   <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>

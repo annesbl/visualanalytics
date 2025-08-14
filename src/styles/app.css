@@ -20,7 +20,7 @@
   --border-radius: 4px;
   --font-body: var(--sans);
   --font-form: var(--sans);
-  --background-body: var(--base-purple-1);
+  --background-body: var(--color-bg);
   --color-body: var(--base-off-black);
   --color-body-light: var(--base-tan-3);
   --scroll-step-background: var(--base-tan-4);
