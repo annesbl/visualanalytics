@@ -36,3 +36,10 @@
   --color-border: var(--base-gray-light);
   --color-highlight: var(--base-yellow);
 }
+html, body {
+  background-color: var(--background-body) !important;
+}
+
+.bar-chart {
+  display: none !important; /* entfernt den Chart komplett */
+}
