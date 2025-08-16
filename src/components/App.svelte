@@ -71,9 +71,9 @@ function handleQuizComplete(e) {
       key="lennas"
     />
 
-    {#if step !== undefined}
+    <!-- {#if step !== undefined}
       <Lenna pixels={lennaPixels} {step} />
-    {/if}
+    {/if} -->
 
   </div>
 

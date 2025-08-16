@@ -27,15 +27,8 @@
 {/if}
 {#if titleVisible}
   <div class="hero" transition:fade>
-    <h1>{title.toUpperCase()}</h1>
-    <h2>{subtitle}</h2>
-    <div class="authors">
-      <div>By <a href={bylines[0].url}>{bylines[0].author}</a></div>
-      <div>
-        with <a href={bylines[1].url}>{bylines[1].author}</a> and
-        <a href={bylines[2].url}>{bylines[2].author}</a>
-      </div>
-    </div>
+    <!-- Dein SVG-Logo als Titel -->
+    <img src="assets/img/title.svg" alt="Title" class="hero-title" />
   </div>
 {/if}
 
