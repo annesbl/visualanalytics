@@ -9,6 +9,14 @@
   import lennaPixels from "$data/lennaPixels.json";
   import _ from "lodash";
   import { onMount } from "svelte";
+  import Quiz from "./Quiz.svelte"; 
+  
+  // Quiz-Komponente
+function handleQuizComplete(e) {
+  console.log("Quiz-Daten:", e.detail);
+  // hier Auswertung triggern
+}
+
 
   let mounted = false;
   let step;
@@ -77,8 +85,28 @@
         {/if}
         <p>{@html text}</p>
       </div>
+  
+      {#if i === 3} <!-- Quiz nach der vierten Box (Index 3) -->
+        <div class="step quiz-step">
+          <Quiz on:quizComplete={handleQuizComplete} />
+        </div>
+      {/if}
     {/each}
-  </Scrolly>
+  </Scrolly> 
+  {#each steps as { text, image }, i}
+  <div class="step" class:active={step === i}>
+    {#if image}
+      <img src={`assets/img/story/${image}.jpg`} alt={image} />
+    {/if}
+    <p>{@html text}</p>
+  </div>
+
+  {#if i === 3}
+    <div class="step quiz-step">
+      <Quiz on:quizComplete={handleQuizComplete} />
+    </div>
+  {/if}
+{/each} 
 </div>
 
 <Conclusion {step} />
