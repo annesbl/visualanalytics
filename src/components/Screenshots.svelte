@@ -57,42 +57,44 @@
 <style>
   img {
     position: absolute;
-    --dur: 1.5s;
-    --del: 1s;
-    height: 0px;
-    width: 0px;
-    background-color: currentColor;
-    border-color: currentColor;
-    border-width: var(--border);
-    border-style: solid;
-    transition: all var(--dur);
-  }
-  img.opaque {
-    opacity: 1;
-  }
-  img.delayed-opacity {
-    transition: width var(--dur), height var(--dur), border-color var(--dur),
-      border-width var(--dur), opacity var(--dur) var(--del), left var(--dur) var(--del),
-      top var(--dur) var(--del);
-  }
-  img.delayed-growth {
-    transition: width var(--dur) var(--del), height var(--dur) var(--del), opacity var(--dur),
-      border-color var(--dur), left var(--dur) var(--del), top var(--dur) var(--del);
-  }
-  img.hidden {
-    opacity: 0;
-  }
-  img.faded {
-    opacity: 0.2;
-  }
+  --dur: 1.5s;
+  --del: 1s;
+  height: 0px;
+  width: 0px;
+  background-color: currentColor;
+  border-color: 0;
+  border-width: 0;
+  border-style: 0;
+  transition: all var(--dur);
+}
+img.opaque {
+  opacity: 1;
+}
+img.delayed-opacity {
+  transition: width var(--dur), height var(--dur), border-color var(--dur),
+    border-width var(--dur), opacity var(--dur) var(--del), left var(--dur) var(--del),
+    top var(--dur) var(--del);
+}
+img.delayed-growth {
+  transition: width var(--dur) var(--del), height var(--dur) var(--del), opacity var(--dur),
+    border-color var(--dur), left var(--dur) var(--del), top var(--dur) var(--del);
+}
+img.hidden {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+img.faded {
+  opacity: 0;
+}
+img.big {
+  width: 200px;
+  height: 200px;
+}
+@media (max-width: 700px) {
   img.big {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
   }
-  @media (max-width: 700px) {
-    img.big {
-      width: 120px;
-      height: 120px;
-    }
-  }
+}
 </style>

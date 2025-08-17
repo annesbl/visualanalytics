@@ -16,7 +16,7 @@
   export let root = null;
   export let top = 0;
   export let bottom = 0;
-  export let increments = 10;
+  export let increments = 50;
   export let value = undefined;
   export let styles;
 
@@ -43,10 +43,10 @@
       }
     }
 
-    if (maxRatio > 0) value = maxIndex;
-    else {
-       if (value > 0) value = -1;
-       else value = undefined;
+    if (maxRatio > 0) {
+    value = maxIndex;
+    } else {
+    value = 0; // fallback: erster Step
     }
   };
 
@@ -60,7 +60,7 @@
 
     const marginTop = top ? top * -1 : 0;
     const marginBottom = bottom ? bottom * -1 : 0;
-    const rootMargin = `${marginTop}px 0px ${marginBottom}px 0px`;
+    const rootMargin = `${marginTop}px 0px ${marginBottom - 400}px 0px`;
     const options = { root, rootMargin, threshold };
 
     if (intersectionObservers[index]) intersectionObservers[index].disconnect();

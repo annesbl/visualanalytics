@@ -49,27 +49,29 @@ function handleQuizComplete(e) {
 <div class="scroll-container">
   <div class="sticky">
     <Screenshots
-      mount={step === undefined || step === 3}
-      visible={step >= 0 && step < 3}
-      faded={step >= 1 && step < 3}
+      mount={step === undefined || step === 5}
+      visible={step >= 0 && step < 5}
+      faded={step >= 2 && step < 5}
       key="memes-0"
     />
     {#each [...new Array(4).keys()] as i}
       <Screenshots
-        mount={step === 0 || step === 3}
-        visible={step >= 1 && step < 3}
-        faded={step >= 2 && step < 3}
-        picNums={[1 + i * 5, 2 + i * 5, 3 + i * 5, 4 + i * 5, 5 + i * 5]}
+        mount={step === 1 || step === 5}
+        visible={step >= 2 && step < 5}
+        faded={step >= 3 && step < 5}
+        picNums={[6,7,8,9,10,11,12]}
         key={`memes-${i + 1}`}
-      />
+    />
     {/each}
 
     <Screenshots
-      mount={step === 1 || step === 3}
-      visible={step >= 2 && step < 3}
-      faded={step >= 3 && step < 3}
+      mount={step === 3 || step === 5}
+      visible={step >= 4 && step < 5}
+      faded={step >= 5 && step < 5}
       key="lennas"
     />
+
+
 
     <!-- {#if step !== undefined}
       <Lenna pixels={lennaPixels} {step} />

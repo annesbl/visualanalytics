@@ -4,7 +4,7 @@
 
 <header>
   <div class="wordmark">
-    <a href="https://pudding.cool" aria-label="The Pudding">{@html wordmark}</a>
+    <img src="/assets/img/title.svg" alt="Title" class="title-logo" />
   </div>
 </header>
 
@@ -16,8 +16,15 @@
 
   .wordmark {
     max-width: 10em;
-    margin: 0 auto;
-    padding: 1em 0 0 0;
+    /*margin: 0 auto;*/
+    padding: 1em 0 0 0;display: flex;
+    justify-content: center;  /* zentriert horizontal */
+    align-items: center;      /* zentriert vertikal */
+    margin: 2rem auto;
+  }
+    .title-logo {
+    max-width: 800px;   /* Titelgröße */
+    height: auto;
   }
 
   .wordmark a {
