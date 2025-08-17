@@ -79,7 +79,7 @@ function handleQuizComplete(e) {
 
   <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>
     {#each steps as { text, image }, i}
-      <div class="step" class:active={step === i}>
+      <div class="step" class:active={step === i|| (i === 0 && step === undefined)}>
         {#if image}
           <img src={`assets/img/story/${image}.jpg`} alt={image} />
         {/if}
@@ -93,20 +93,7 @@ function handleQuizComplete(e) {
       {/if}
     {/each}
   </Scrolly> 
-  {#each steps as { text, image }, i}
-  <div class="step" class:active={step === i}>
-    {#if image}
-      <img src={`assets/img/story/${image}.jpg`} alt={image} />
-    {/if}
-    <p>{@html text}</p>
-  </div>
 
-  {#if i === 3}
-    <div class="step quiz-step">
-      <Quiz on:quizComplete={handleQuizComplete} />
-    </div>
-  {/if}
-{/each} 
 </div>
 
 <Conclusion {step} />
@@ -117,12 +104,12 @@ function handleQuizComplete(e) {
     font-size: 18px;
     width: 20em;
     margin-right: 120px;
-    margin-bottom: 60vh;
+    margin-bottom: 40vh;
     color: var(--color-body);
     background: var(--scroll-step-background);
     align-self: flex-end;
     z-index: 1000;
-    opacity: 0.4;
+    opacity: 1;
   }
 
   .step p {
@@ -184,7 +171,7 @@ function handleQuizComplete(e) {
   }
 
   .active {
-    opacity: 1;
+    opacity: 1 !important;
   }
   .sticky {
     position: sticky;
@@ -208,4 +195,8 @@ function handleQuizComplete(e) {
       margin: 0 auto 90vh auto;
     }
   }
+  .step:first-child {
+  opacity: 1 !important;
+}
+
 </style>
