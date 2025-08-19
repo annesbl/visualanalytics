@@ -33,7 +33,7 @@
 
   <!-- 1 -->
   <div class="question">
-    <p>1. How many hours a day do you spend alone?</p>
+    <p> How many hours a day do you spend alone?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -56,7 +56,7 @@
 
   <!-- 2 -->
   <div class="question">
-    <p>2. Do you have stage fear?</p>
+    <p> Do you have stage fear?</p>
     <div class="button-group">
       <button
         class:selected={userAnswers.Stage_fear === "Yes"}
@@ -75,7 +75,7 @@
 
   <!-- 3 -->
   <div class="question">
-    <p>3. How often do you attend social events?</p>
+    <p> How often do you attend social events?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -98,7 +98,7 @@
 
   <!-- 4 -->
   <div class="question">
-    <p>4. How often do you go outside?</p>
+    <p> How often do you go outside?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -121,7 +121,7 @@
 
   <!-- 5 -->
   <div class="question">
-    <p>5. Do you feel drained after socializing?</p>
+    <p> Do you feel drained after socializing?</p>
     <div class="button-group">
       <button
         class:selected={userAnswers.Drained_after_socializing === "Yes"}
@@ -140,7 +140,7 @@
 
   <!-- 6 -->
   <div class="question">
-    <p>6. How big is your circle of friends?</p>
+    <p> How big is your circle of friends?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -163,7 +163,7 @@
 
   <!-- 7 -->
   <div class="question">
-    <p>7. How often do you post online?</p>
+    <p> How often do you post online?</p>
     <div class="slider-wrapper">
       <input
         type="range"
