@@ -36,7 +36,7 @@
   <div class="images">
     {#each [...new Array(count).keys()] as i}
       <img
-        src={`assets/img/${key.includes("meme") ? "memes" : "screenshots"}/pic${picNums[i]}.svg`}
+        src={`assets/img/${key.includes("meme") ? "memes" : "screenshots"}/pic${picNums[i]}.png`}
         alt={key}
         style={`--border: ${
           visible ? Math.ceil($gridPixelSize / (2 * dpr)) : Math.ceil($pixelSize / 2)

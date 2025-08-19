@@ -83,7 +83,7 @@ function handleQuizComplete(e) {
     {#each steps as { text, image }, i}
       <div class="step" class:active={step === i|| (i === 0 && step === undefined)}>
         {#if image}
-          <img src={`assets/img/story/${image}.svg`} alt={image} />
+          <img src={`assets/img/story/${image}.png`} alt={image} />
         {/if}
         <p>{@html text}</p>
       </div>
