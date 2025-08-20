@@ -66,7 +66,7 @@
     --del: 1s;
     height: 0px;
     width: 0px;
-    background-color: currentColor;
+    /*background-color: currentColor;*/
     border-color: 0;
     border-width: 0;
     border-style: 0;
