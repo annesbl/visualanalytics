@@ -10,38 +10,35 @@
   import _ from "lodash";
   import { onMount } from "svelte";
   import Quiz from "./Quiz.svelte";
-  let avatarInPlace = false;
-  let classification = "extro"; // später aus Antworten berechnet
+  import dataset from "$data/personality_dataset.json";
 
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            avatarInPlace = true;
-          }
-        });
-      },
-      { threshold: 1 }
-    );
-    const target = document.querySelector(".row1 .gap");
-    if (target) observer.observe(target);
-  });
+  let avatarInPlace = false;
+  let classification = "extro"; // wird nach Quiz gesetzt
+  let showColors = false;
 
   // Quiz-Komponente
   function handleQuizComplete(e) {
     console.log("Quiz-Daten:", e.detail);
-    // hier Auswertung triggern
+    // Klassifikation berechnen
+    classification = classifyUser(e.detail);
+
     // Scroll zum Ergebnis-Bereich
     const resultsEl = document.getElementById("results-section");
     if (resultsEl) {
       resultsEl.scrollIntoView({ behavior: "smooth" });
     }
+
+    // Nach Slide-Finish Farben einschalten
+    if (e.isIntersecting) {
+      avatarInPlace = true;
+      setTimeout(() => {
+        showColors = true; // wichtig!
+      }, 1500);
+    }
   }
 
   let mounted = false;
   let step;
-  let playboyDestination;
   let scrollY = 0;
   const steps = copy.scrollProse;
 
@@ -60,9 +57,46 @@
     mounted = true;
     scrollY = window.scrollY;
     adjustStep();
+
+    // Avatar in-place triggern, wenn Gap sichtbar
+    const target = document.querySelector(".row1 .gap");
+    if (target) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            avatarInPlace = entry.isIntersecting;
+          });
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(target);
+    }
   });
 
-  // $: console.log({ step });
+  // Klassifizierung
+  function classifyUser(answers) {
+    let bestMatch = null;
+    let bestScore = Infinity;
+
+    dataset.forEach((person) => {
+      let score = 0;
+      score += Math.abs(person.Time_spent_Alone - answers.Time_spent_Alone);
+      score += Math.abs(person.Social_event_attendance - answers.Social_event_attendance);
+      score += Math.abs(person.Going_outside - answers.Going_outside);
+      score += Math.abs(person.Friends_circle_size - answers.Friends_circle_size);
+      score += Math.abs(person.Post_frequency - answers.Post_frequency);
+
+      if (person.Stage_fear !== answers.Stage_fear) score += 1;
+      if (person.Drained_after_socializing !== answers.Drained_after_socializing) score += 1;
+
+      if (score < bestScore) {
+        bestScore = score;
+        bestMatch = person;
+      }
+    });
+
+    return bestMatch ? bestMatch.Personality.toLowerCase() : "intro";
+  }
 </script>
 
 <Hero {step} />
@@ -91,16 +125,11 @@
       faded={step >= 5 && step < 5}
       key="lennas"
     />
-
-    <!-- {#if step !== undefined}
-      <Lenna pixels={lennaPixels} {step} />
-    {/if} -->
   </div>
 
   <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>
     {#each steps as { text, image }, i}
       {#if i < steps.length - 13}
-        <!-- letzten 13 Steps ausblenden -->
         <div
           class="step"
           class:active={step === i || (i === 0 && step === undefined)}
@@ -122,44 +151,94 @@
     {/each}
   </Scrolly>
 </div>
+
 <section id="results-section" class="results">
   <h2>this is you!<br />Let’s see how you are keeping up with other people</h2>
 
   <!-- Dein Avatar -->
   <div class="avatar-container">
-    <img
-      src="/assets/img/Me.svg"
-      alt="You"
-      class="me-avatar"
+    <div
+      class="avatar-box me-avatar"
       class:in-place={avatarInPlace}
       class:intro={classification === "intro"}
       class:extro={classification === "extro"}
-    />
+    >
+      <img src="/assets/img/Me.svg" alt="You" />
+    </div>
   </div>
 
   <!-- Andere Avatare -->
-  <div class="others-grid">
+  <div class="others-grid" class:colored={showColors}>
     <div class="row row1">
-      <img src="/assets/img/memes/pic1.png" alt="" />
-      <img src="/assets/img/memes/pic2.png" alt="" />
-      <img src="/assets/img/memes/pic3.png" alt="" />
+      <div
+        class="avatar-box"
+        class:intro={classification === "intro"}
+        class:extro={classification === "extro"}
+      >
+        <img src="/assets/img/memes/pic1.png" alt="" />
+      </div>
+      <div
+        class="avatar-box"
+        class:intro={classification === "intro"}
+        class:extro={classification === "extro"}
+      >
+        <img src="/assets/img/memes/pic2.png" alt="" />
+      </div>
+      <div
+        class="avatar-box"
+        class:intro={classification === "intro"}
+        class:extro={classification === "extro"}
+      >
+        <img src="/assets/img/memes/pic3.png" alt="" />
+      </div>
       <div class="gap" />
-      <img src="/assets/img/memes/pic4.png" alt="" />
-      <img src="/assets/img/memes/pic5.png" alt="" />
-      <img src="/assets/img/memes/pic6.png" alt="" />
+      <div
+        class="avatar-box"
+        class:intro={classification === "intro"}
+        class:extro={classification === "extro"}
+      >
+        <img src="/assets/img/memes/pic4.png" alt="" />
+      </div>
+      <div
+        class="avatar-box"
+        class:intro={classification === "intro"}
+        class:extro={classification === "extro"}
+      >
+        <img src="/assets/img/memes/pic5.png" alt="" />
+      </div>
+      <div
+        class="avatar-box"
+        class:intro={classification === "intro"}
+        class:extro={classification === "extro"}
+      >
+        <img src="/assets/img/memes/pic6.png" alt="" />
+      </div>
     </div>
     <div class="row row2">
       {#each [7, 8, 9, 10, 11, 12, 13] as n}
-        <img src={`/assets/img/memes/pic${n}.png`} alt="" />
+        <div
+          class="avatar-box"
+          class:intro={classification === "intro"}
+          class:extro={classification === "extro"}
+        >
+          <img src={`/assets/img/memes/pic${n}.png`} alt="" />
+        </div>
       {/each}
     </div>
     <div class="row row3">
       {#each [14, 15, 16, 17, 18, 19, 20] as n}
-        <img src={`/assets/img/memes/pic${n}.png`} alt="" />
+        <div
+          class="avatar-box"
+          class:intro={classification === "intro"}
+          class:extro={classification === "extro"}
+        >
+          <img src={`/assets/img/memes/pic${n}.png`} alt="" />
+        </div>
       {/each}
     </div>
   </div>
 </section>
+
 <Conclusion {step} />
 <Footer />
 
@@ -176,72 +255,14 @@
     opacity: 1;
   }
   .step.right {
-    margin-left: auto; /* schiebt Box nach rechts */
+    margin-left: auto;
     margin-right: 120px;
     text-align: right;
   }
-
   .step.left {
-    margin-right: auto; /* schiebt Box nach links */
+    margin-right: auto;
     margin-left: 120px;
     text-align: left;
-  }
-  .step p {
-    line-height: 1.65;
-    padding: 0.75rem 1.75rem;
-  }
-
-  :global(.step a) {
-    text-decoration: none;
-    border-bottom: 1px solid var(--base-purple-3);
-  }
-
-  :global(.step a:hover) {
-    border-bottom: 2px solid var(--base-green-2);
-  }
-
-  :global(.step span) {
-    font-weight: 700;
-    outline: 2px solid var(--base-green-2);
-    padding: 0.125rem 0.25rem;
-  }
-
-  :global(.step .bolded) {
-    font-weight: 700;
-    outline: none;
-  }
-
-  :global(.step .org-span) {
-    background: var(--base-blue-2);
-    outline: none;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  :global(.step .edu-span) {
-    background: var(--base-orange-1);
-    outline: none;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  :global(.step .com-span) {
-    background: var(--base-orange-2);
-    outline: none;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  :global(.step .other-span) {
-    background: var(--base-tan-1);
-    outline: none;
-    cursor: default;
-    display: inline-block;
-  }
-
-  :global(.step .org-span:hover, .step .edu-span:hover, .step .com-span:hover, .step
-      .other-span:hover) {
-    outline: 2px solid #282828;
   }
 
   .active {
@@ -269,15 +290,11 @@
       margin: 0 auto 90vh auto;
     }
   }
-  .step:first-child {
-    opacity: 1 !important;
-  }
 
   .results {
     text-align: center;
-    margin-top: 100vh; /* sorgt dafür, dass man runterscrollt */
+    margin-top: 100vh;
   }
-
   .results h2 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
@@ -285,50 +302,54 @@
 
   .avatar-container {
     margin: 2rem 0;
-    position: relative;
     display: flex;
     justify-content: center;
   }
 
-  .me-avatar {
-    width: 100px;
-    height: auto;
-    transition: transform 1.5s ease 2s; /* für das Runtersliden */
+  .avatar-box {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2e8df;
+    transition: background-color 1s ease;
+  }
+  .avatar-box img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
   }
 
   .others-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+
+  .others-grid.colored .avatar-box.intro {
+    background-color: rgba(220, 50, 47, 0.8); /* rot */
+  }
+  .others-grid.colored .avatar-box.extro {
+    background-color: rgba(38, 139, 210, 0.8); /* blau */
   }
 
   .row {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7, 90px);
     gap: 1rem;
+    justify-content: center;
   }
-
   .row1 .gap {
-    width: 120px; /* Lücke für dein Avatar */
+    width: 90px;
+    height: 90px;
   }
 
-  .row img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    filter: grayscale(100%);
-    transition: filter 1s ease, transform 1.5s ease;
-  }
-
-  /* Farbe für Klassifikation */
-  .intro {
-    filter: grayscale(0%) sepia(1) hue-rotate(-20deg) saturate(5); /* rot */
-  }
-  .extro {
-    filter: grayscale(0%) sepia(1) hue-rotate(180deg) saturate(5); /* blau */
+  .me-avatar {
+    transition: transform 1.5s ease 0.5s;
   }
   .me-avatar.in-place {
-    transform: translateY(100px); /* Avatar rutscht runter */
+    transform: translateY(120px);
   }
 </style>
