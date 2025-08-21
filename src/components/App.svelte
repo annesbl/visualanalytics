@@ -260,15 +260,18 @@
 <style>
   .step {
     font-size: 18px;
-    width: 20em;
+    width: 28em; /* breiter */
     margin-right: 120px;
     margin-bottom: 40vh;
+    padding: 1.5rem; /* innen mehr Platz */
     color: var(--color-body);
     background: var(--scroll-step-background);
+    border-radius: 8px; /* runde Ecken */
     align-self: flex-end;
     z-index: 1000;
     opacity: 1;
   }
+
   .step.right {
     margin-left: auto;
     margin-right: 120px;
