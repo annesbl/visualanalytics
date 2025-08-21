@@ -19,22 +19,33 @@
   // Quiz-Komponente
   function handleQuizComplete(e) {
     console.log("Quiz-Daten:", e.detail);
-    // Klassifikation berechnen
-    classification = classifyUser(e.detail);
 
-    // Scroll zum Ergebnis-Bereich
+    // Normalisieren: Strings -> Numbers/Booleans
+    const answers = {
+      Time_spent_Alone: Number(e.detail.Time_spent_Alone),
+      Social_event_attendance: Number(e.detail.Social_event_attendance),
+      Going_outside: Number(e.detail.Going_outside),
+      Friends_circle_size: Number(e.detail.Friends_circle_size),
+      Post_frequency: Number(e.detail.Post_frequency),
+      Stage_fear: e.detail.Stage_fear === "Yes",
+      Drained_after_socializing: e.detail.Drained_after_socializing === "Yes"
+    };
+
+    classification = classifyUser(answers);
+    console.log("Klassifikation:", classification);
+
+    // Scroll zum Ergebnis
     const resultsEl = document.getElementById("results-section");
     if (resultsEl) {
       resultsEl.scrollIntoView({ behavior: "smooth" });
     }
 
-    // Nach Slide-Finish Farben einschalten
-    if (e.isIntersecting) {
-      avatarInPlace = true;
-      setTimeout(() => {
-        showColors = true; // wichtig!
-      }, 1500);
-    }
+    // Farben nach Slide aktivieren
+    avatarInPlace = true;
+    setTimeout(() => {
+      showColors = true;
+      console.log("showColors:", showColors);
+    }, 1500);
   }
 
   let mounted = false;
@@ -329,10 +340,10 @@
   }
 
   .others-grid.colored .avatar-box.intro {
-    background-color: rgba(220, 50, 47, 0.8); /* rot */
+    background: rgba(220, 50, 47, 0.8); /* rot */
   }
   .others-grid.colored .avatar-box.extro {
-    background-color: rgba(38, 139, 210, 0.8); /* blau */
+    background: rgba(38, 139, 210, 0.8); /* blau */
   }
 
   .row {
