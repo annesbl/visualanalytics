@@ -98,19 +98,19 @@
 
   <!-- 4 -->
   <div class="question">
-    <p> How often do you go outside?</p>
+    <p> How often do you go outside in a week?</p>
     <div class="slider-wrapper">
       <input
         type="range"
         min="0"
-        max="10"
+        max="7"
         bind:value={userAnswers.Going_outside}
         class="custom-slider"
       />
       {#if userAnswers.Going_outside !== ""}
         <span
           class="slider-value"
-          style="left: {getSliderPosition(userAnswers.Going_outside, 0, 10)}%;"
+          style="left: {getSliderPosition(userAnswers.Going_outside, 0, 7)}%;"
         >
           {userAnswers.Going_outside}
         </span>
@@ -219,7 +219,8 @@
     gap: 2rem;
     margin-top: 3rem;
     margin-bottom: 4rem;
-    padding-left: 4rem;
+    padding-left: 0rem;
+    justify-content: center; 
   }
 
   .button-group button {
@@ -230,6 +231,7 @@
     color: white;
     font-weight: standard;
     cursor: pointer;
+    
   }
 
   .button-group button.selected {
