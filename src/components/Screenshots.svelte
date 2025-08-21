@@ -16,8 +16,7 @@
 
   $: origins = getOrigins($viewport.width, $viewport.height);
   $: destinations = getDestinations(key, $viewport.width, $viewport.height, finalSize);
-  $: finalSize = $viewport.width > 700 ? 200 : 120;
-
+$: finalSize = $viewport.width > 700 ? 150 : 90;
   const getColor = (i) => {
     if (key.includes("meme")) return colors[i];
     if (visible) return "var(--base-green-2)";
