@@ -1,8 +1,7 @@
 <script>
-  export let title = "Can Data Die? Tracking the Lenna Image";
-  export let description =
-    "Why one of the Internet’s oldest images lives on without its subject’s consent";
-  export let url = "https://pudding.cool/2021/10/lenna";
+  export let title = "introvert or extrovert";
+  export let description = "let's break the stereotypes";
+  export let url = "https://introvert-extrovert.com";
 </script>
 
 <svelte:head>
@@ -11,11 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="description" content={description} />
-  <meta name="author" content="The Pudding" />
+  <meta name="author" content="introvert or extrovert" />
   <meta name="news_keywords" content="" />
 
   <meta property="og:title" content={title} />
-  <meta property="og:site_name" content="The Pudding" />
+  <meta property="og:site_name" content="introvert or extrovert" />
   <meta property="og:url" content={url} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="article" />
@@ -27,7 +26,7 @@
   <meta property="og:image:height" content="600" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="https://pudding.cool" />
+  <meta name="twitter:site" content="https://introvert-extrovert.com" />
   <meta name="twitter:creator" content="@puddingviz" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
