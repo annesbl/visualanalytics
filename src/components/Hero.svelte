@@ -22,9 +22,10 @@
   });
 </script>
 
-{#if gridVisible && ready}
+<!-- PixelGalaxy component removed to use solid beige background -->
+<!-- {#if gridVisible && ready}
   <PixelGalaxy {step} size={$gridPixelSize} />
-{/if}
+{/if} -->
 {#if titleVisible}
   <div class="hero" transition:fade>
     <!-- Dein SVG-Logo als Titel -->
