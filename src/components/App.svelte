@@ -106,7 +106,11 @@
       }
     });
 
-    return bestMatch ? bestMatch.Personality.toLowerCase() : "intro";
+    return bestMatch
+      ? bestMatch.Personality.toLowerCase().startsWith("extro")
+        ? "extro"
+        : "intro"
+      : "intro";
   }
 </script>
 
@@ -340,10 +344,10 @@
   }
 
   .others-grid.colored .avatar-box.intro {
-    background: rgba(220, 50, 47, 0.8); /* rot */
+    background: rgba(195, 213, 255, 0.8); /* rot */
   }
   .others-grid.colored .avatar-box.extro {
-    background: rgba(38, 139, 210, 0.8); /* blau */
+    background: rgba(253, 169, 169, 0.8); /* blau */
   }
 
   .row {
