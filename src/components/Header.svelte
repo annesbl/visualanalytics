@@ -15,17 +15,16 @@
   }
 
   .wordmark {
-    max-width: 10em;
-    /*margin: 0 auto;*/
-    padding: 1em 0 0 0;display: flex;
-    justify-content: center;  /* zentriert horizontal */
-    align-items: center;      /* zentriert vertikal */
-    margin: 2rem auto;
-  }
+  max-width: none;
+  display: flex;
+  justify-content: center;
+  margin: 3rem auto;
+}
     .title-logo {
-    max-width: 800px;   /* Titelgröße */
-    height: auto;
-  }
+  width: 80%;        /* nimmt 80% der Bildschirmbreite */
+  max-width: 1200px; /* aber nicht breiter als 1200px */
+  height: auto;
+}
 
   .wordmark a {
     border: none;
