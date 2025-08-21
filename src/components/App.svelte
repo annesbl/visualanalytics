@@ -118,28 +118,21 @@
 
 <div class="scroll-container">
   <div class="sticky">
-    <Screenshots
-      mount={step === undefined || step === 5}
-      visible={step >= 0 && step < 5}
-      faded={step >= 2 && step < 5}
-      key="memes-0"
-    />
+    <!-- nur Step 0 sichtbar -->
+    <Screenshots mount={step === 0} visible={step === 0} key="memes-0" />
+
+    <!-- für die nächsten 4 Schritte genau eine Instanz sichtbar -->
     {#each [...new Array(4).keys()] as i}
       <Screenshots
-        mount={step === 1 || step === 5}
-        visible={step >= 2 && step < 5}
-        faded={step >= 3 && step < 5}
+        mount={step === i + 1}
+        visible={step === i + 1}
         picNums={[6, 7, 8, 9, 10, 11, 12]}
         key={`memes-${i + 1}`}
       />
     {/each}
 
-    <Screenshots
-      mount={step === 3 || step === 5}
-      visible={step >= 4 && step < 5}
-      faded={step >= 5 && step < 5}
-      key="lennas"
-    />
+    <!-- z.B. nur Step 5 sichtbar -->
+    <Screenshots mount={step === 5} visible={step === 5} key="lennas" />
   </div>
 
   <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>
