@@ -6,7 +6,7 @@
   // Antworten werden hier gesammelt
   let userAnswers = {
     Time_spent_Alone: "",
-    Stage_fear:  "",
+    Stage_fear: "",
     Social_event_attendance: "",
     Going_outside: "",
     Drained_after_socializing: "",
@@ -22,10 +22,9 @@
     dispatch("quizComplete", userAnswers);
   }
   function getSliderPosition(value, min, max) {
-  const percent = (value - min) / (max - min);
-  return percent * 100; // Prozent vom Track
-}
-
+    const steps = max - min;
+    return ((value - min) / steps) * 100;
+  }
 </script>
 
 <div class="quiz-container">
@@ -33,7 +32,7 @@
 
   <!-- 1 -->
   <div class="question">
-    <p> How many hours a day do you spend alone?</p>
+    <p>How many hours a day do you spend alone?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -52,11 +51,10 @@
       {/if}
     </div>
   </div>
-  
 
   <!-- 2 -->
   <div class="question">
-    <p> Do you have stage fear?</p>
+    <p>Do you have stage fear?</p>
     <div class="button-group">
       <button
         class:selected={userAnswers.Stage_fear === "Yes"}
@@ -75,7 +73,7 @@
 
   <!-- 3 -->
   <div class="question">
-    <p> How often do you attend social events?</p>
+    <p>How often do you attend social events?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -94,11 +92,10 @@
       {/if}
     </div>
   </div>
-  
 
   <!-- 4 -->
   <div class="question">
-    <p> How often do you go outside in a week?</p>
+    <p>How often do you go outside in a week?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -117,11 +114,10 @@
       {/if}
     </div>
   </div>
-  
 
   <!-- 5 -->
   <div class="question">
-    <p> Do you feel drained after socializing?</p>
+    <p>Do you feel drained after socializing?</p>
     <div class="button-group">
       <button
         class:selected={userAnswers.Drained_after_socializing === "Yes"}
@@ -140,7 +136,7 @@
 
   <!-- 6 -->
   <div class="question">
-    <p> How big is your circle of friends?</p>
+    <p>How big is your circle of friends?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -159,11 +155,10 @@
       {/if}
     </div>
   </div>
-  
 
   <!-- 7 -->
   <div class="question">
-    <p> How often do you post online?</p>
+    <p>How often do you post online?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -182,7 +177,6 @@
       {/if}
     </div>
   </div>
-  
 
   <button class="submit" on:click={submitQuiz}>See Results</button>
 </div>
@@ -220,7 +214,7 @@
     margin-top: 3rem;
     margin-bottom: 4rem;
     padding-left: 0rem;
-    justify-content: center; 
+    justify-content: center;
   }
 
   .button-group button {
@@ -231,7 +225,6 @@
     color: white;
     font-weight: standard;
     cursor: pointer;
-    
   }
 
   .button-group button.selected {
@@ -250,7 +243,7 @@
 
   .custom-slider::-webkit-slider-runnable-track {
     height: 40px;
-    background: url('/assets/img/balken.svg') no-repeat center;
+    background: url("/assets/img/balken.svg") no-repeat center;
     background-size: contain;
     border: none;
     margin-top: 50px;
@@ -258,7 +251,7 @@
 
   .custom-slider::-moz-range-track {
     height: 40px;
-    background: url('/assets/img/balken.svg') no-repeat center;
+    background: url("/assets/img/balken.svg") no-repeat center;
     background-size: contain;
     border: none;
   }
@@ -286,7 +279,7 @@
   .submit {
     width: 100%;
     padding: 1rem;
-    background: #F2E8DF;
+    background: #f2e8df;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -294,19 +287,18 @@
     color: var(--color-body);
   }
   .slider-wrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 4rem;
-}
+    position: relative;
+    width: 100%;
+    margin-bottom: 4rem;
+  }
 
-.slider-value {
-  position: absolute;
-  top: 60px; /* Höhe über Slider */
-  transform: translateX(-50%);
-  font-weight: 200;
-  color: #c9a6a6;   /* Schriftfarbe */
-  font-size: 18px; /* Schriftgröße */
-  pointer-events: none;
-}
-
+  .slider-value {
+    position: absolute;
+    top: 60px; /* Höhe über Slider */
+    transform: translateX(-50%);
+    font-weight: 200;
+    color: #c9a6a6; /* Schriftfarbe */
+    font-size: 18px; /* Schriftgröße */
+    pointer-events: none;
+  }
 </style>

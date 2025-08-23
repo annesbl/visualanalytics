@@ -11,10 +11,15 @@
   import { onMount } from "svelte";
   import Quiz from "./Quiz.svelte";
   import dataset from "$data/personality_dataset.json";
+  import QuestionBlock from "./QuestionBlock.svelte";
+  import EvaluationBlock from "./EvaluationBlock.svelte";
+  import EvaluationBlockYesNo from "./EvaluationBlockYesNo.svelte";
+  import EvaluationBlockFriends from "./EvaluationBlockFriends.svelte";
 
   let avatarInPlace = false;
   let classification = "extro"; // wird nach Quiz gesetzt
   let showColors = false;
+  let userAnswers = {}; // hier speichern wir die Quiz-Antworten
 
   // Quiz-Komponente
   function handleQuizComplete(e) {
@@ -115,7 +120,7 @@
 </script>
 
 <Hero {step} />
-
+<QuestionBlock />
 <div class="scroll-container">
   <div class="sticky">
     <!-- nur Step 0 sichtbar -->
@@ -246,6 +251,46 @@
     </div>
   </div>
 </section>
+<!-- Erste Auswertung -->
+<EvaluationBlock
+  question="How many hours of the day do you spend alone?"
+  field="Time_spent_Alone"
+  min={0}
+  max={11}
+  userAnswer={userAnswers.Time_spent_Alone}
+/>
+<!-- Zweite Frage (Ja/Nein) -->
+<EvaluationBlockYesNo
+  question="Do you feel anxious when having to speak on stage?"
+  field="Stage_fear"
+/>
+<!-- dritte Auswertung -->
+<EvaluationBlock
+  question="How often do you attend social events?"
+  field="Social_event_attendance"
+  min={0}
+  max={11}
+/>
+<!-- vierte Auswertung -->
+<EvaluationBlock
+  question="How often do you go outside in a week?"
+  field="Going_outside"
+  min={0}
+  max={7}
+/>
+<!-- fünfte Auswertung -->
+<EvaluationBlockYesNo
+  question="Do you feel drained after socializing?"
+  field="Drained_after_socializing"
+/>
+<!-- freunde Auswertung -->
+<EvaluationBlockFriends
+  question="How is the size of your friends cycle?"
+  field="Friends_circle_size"
+  userAnswer={userAnswers.Friends_circle_size}
+/>
+<!-- siebte Auswertung -->
+<EvaluationBlock question="How often do you post online?" field="Post_frequency" min={0} max={10} />
 
 <Conclusion {step} />
 <Footer />
