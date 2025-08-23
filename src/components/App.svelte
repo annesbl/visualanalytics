@@ -38,7 +38,7 @@
 
     classification = classifyUser(answers);
     console.log("Klassifikation:", classification);
-
+    userAnswers = answers;
     // Scroll zum Ergebnis
     const resultsEl = document.getElementById("results-section");
     if (resultsEl) {
@@ -270,6 +270,7 @@
   field="Social_event_attendance"
   min={0}
   max={11}
+  userAnswer={userAnswers.Social_event_attendance}
 />
 <!-- vierte Auswertung -->
 <EvaluationBlock
@@ -277,8 +278,9 @@
   field="Going_outside"
   min={0}
   max={7}
+  userAnswer={userAnswers.Going_outside}
 />
-<!-- fünfte Auswertung -->
+<!-- fünfte Auswertung ja/nein-->
 <EvaluationBlockYesNo
   question="Do you feel drained after socializing?"
   field="Drained_after_socializing"
@@ -290,7 +292,13 @@
   userAnswer={userAnswers.Friends_circle_size}
 />
 <!-- siebte Auswertung -->
-<EvaluationBlock question="How often do you post online?" field="Post_frequency" min={0} max={10} />
+<EvaluationBlock
+  question="How often do you post online?"
+  field="Post_frequency"
+  min={0}
+  max={10}
+  userAnswer={userAnswers.Post_frequency}
+/>
 
 <Conclusion {step} />
 <Footer />

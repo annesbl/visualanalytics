@@ -6,14 +6,16 @@
   export let field = "Time_spent_Alone"; // Feld im Datensatz
   export let min = 0;
   export let max = 24;
+  export let userAnswer = null; // vom Quiz übergeben
 
   let selectedValue = 5; // default
   let avatars = [];
 
   function getSliderPosition(value, min, max) {
-    const steps = max - min;
-    return ((value - min) / steps) * 100;
+    const percent = ((value - min) / (max - min)) * 100;
+    return percent;
   }
+
   // Funktion: 27 zufällige Personen mit dieser Antwort holen
   function samplePeople(answer) {
     const filtered = dataset.filter((p) => p[field] == answer);
@@ -50,6 +52,15 @@
   <!-- Slider -->
   <div class="slider-wrapper">
     <input type="range" {min} {max} bind:value={selectedValue} class="custom-slider" />
+
+    <!-- Dein eigener Avatar bleibt fix an deiner Antwort -->
+    {#if userAnswer !== null}
+      <div class="me-avatar" style="left: {getSliderPosition(userAnswer, min, max)}%;">
+        <img src="/assets/img/Me.svg" alt="Me" />
+      </div>
+    {/if}
+
+    <!-- Aktuelle Auswahl-Anzeige -->
     {#if selectedValue !== ""}
       <span class="slider-value" style="left: {getSliderPosition(selectedValue, min, max)}%;">
         {selectedValue}
@@ -100,9 +111,9 @@
   }
 
   .slider-wrapper {
-    position: relative;
+    position: relative; /* wichtig, damit Avatar absolute positioniert werden kann */
     width: 100%;
-    margin: 2rem auto;
+    margin-bottom: 4rem;
   }
 
   .custom-slider {
@@ -137,5 +148,24 @@
     font-weight: 200;
     color: #c9a6a6;
     font-size: 18px;
+  }
+  .me-avatar {
+    position: absolute;
+    top: -7px; /* über dem Slider platzieren */
+    transform: translateX(-50%);
+    background: transparent; /* deine Wunschfarbe */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Avatar über Slider sichtbar */
+    pointer-events: none; /* nicht klickbar */
+  }
+
+  .me-avatar img {
+    width: 28px;
+    height: 28px;
   }
 </style>
