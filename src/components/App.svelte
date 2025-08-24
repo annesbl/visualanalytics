@@ -250,8 +250,12 @@
   </div>
 </section>
 <!-- Erste Auswertung -->
+<div class="step evaluation-step">
+  <div class="question-textblock">
+    <p>How many hours of the day do you spend alone?</p>
+  </div>
+</div>
 <EvaluationBlock
-  question="How many hours of the day do you spend alone?"
   field="Time_spent_Alone"
   min={0}
   max={11}
@@ -263,6 +267,11 @@
   field="Stage_fear"
 />
 <!-- dritte Auswertung -->
+<div class="step evaluation-step">
+  <div class="question-textblock">
+    <p>How often do you attend social events?</p>
+  </div>
+</div>
 <EvaluationBlock
   question="How often do you attend social events?"
   field="Social_event_attendance"
@@ -271,6 +280,11 @@
   userAnswer={userAnswers.Social_event_attendance}
 />
 <!-- vierte Auswertung -->
+<div class="step evaluation-step">
+  <div class="question-textblock">
+    <p>How often do you go outside in a week?</p>
+  </div>
+</div>
 <EvaluationBlock
   question="How often do you go outside in a week?"
   field="Going_outside"
@@ -290,6 +304,11 @@
   userAnswer={userAnswers.Friends_circle_size}
 />
 <!-- siebte Auswertung -->
+<div class="step evaluation-step">
+  <div class="question-textblock">
+    <p>How often do you post online?</p>
+  </div>
+</div>
 <EvaluationBlock
   question="How often do you post online?"
   field="Post_frequency"
@@ -423,5 +442,27 @@
   }
   .me-avatar.in-place {
     transform: translateY(120px);
+  }
+  .step.evaluation-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -25rem; /* Abstand zwischen den Fragen */
+    justify-content: center;
+    background: none !important; /* Hintergrund entfernen */
+    box-shadow: none !important; /* falls Schatten noch da wäre */
+    border-radius: 0 !important; /* Ecken neutralisieren */
+    padding: 0;
+    margin-top: 20rem;
+  }
+
+  .question-textblock {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 0rem;
+    text-align: center;
   }
 </style>

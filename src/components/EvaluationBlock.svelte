@@ -48,7 +48,7 @@
 </script>
 
 <div class="evaluation-block">
-  <h3>{question}</h3>
+  <!--<h3>{question}</h3>-->
 
   <!-- Avatar Grid -->
   <div class="grid">
