@@ -18,10 +18,6 @@
     </ul>
   {/each}
 
-  <h3 id="methods">Methods & Notes</h3>
-  {#each copy.methods as paragraph}
-    <p class="methods">{@html paragraph.value}</p>
-  {/each}
 </div>
 
 
@@ -54,7 +50,7 @@
     font-family: var(--mono);
     text-transform: uppercase;
     font-size: 28px;
-    border-top: 1px solid var(--base-purple-3);
+    
     margin-top: 4rem;
   }
 
