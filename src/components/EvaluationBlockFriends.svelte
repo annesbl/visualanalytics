@@ -57,7 +57,7 @@
 
 <style>
   .evaluation-block {
-    margin: 4rem auto;
+    margin: 30rem auto;
     text-align: center;
     width: 95%;
   }
