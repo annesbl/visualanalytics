@@ -112,8 +112,9 @@
 
   .slider-wrapper {
     position: relative; /* wichtig, damit Avatar absolute positioniert werden kann */
-    width: 100%;
-    margin-bottom: 4rem;
+    width: 80%; /* hier statt 100% enger machen */
+    max-width: 630px; /* feste Max-Breite falls gewünscht */
+    margin: 0 auto 4rem auto;
   }
 
   .custom-slider {
