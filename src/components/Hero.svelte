@@ -47,7 +47,7 @@
   h2,
   .authors {
     color: var(--color-body-light);
-    font-family: var(--mono);
+    font-family: "Outfit", sans-serif;
   }
 
   h1 {

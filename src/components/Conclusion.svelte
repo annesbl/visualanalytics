@@ -13,13 +13,11 @@
     <p class="list-header">{@html list.header}</p>
     <ul>
       {#each list.links as link}
-      <li>{@html link.value}</li>
+        <li>{@html link.value}</li>
       {/each}
     </ul>
   {/each}
-
 </div>
-
 
 <style>
   .conclusion {
@@ -40,17 +38,17 @@
 
   .list-header {
     color: var(--chart-text);
-    font-family: var(--mono);
+    font-family: "Outfit", sans-serif;
     font-size: 16px;
   }
 
   h3 {
     width: 100%;
     text-align: left;
-    font-family: var(--mono);
+    font-family: "Outfit", sans-serif;
     text-transform: uppercase;
     font-size: 28px;
-    
+
     margin-top: 4rem;
   }
 
@@ -64,12 +62,12 @@
   }
 
   li::before {
-    content: "";  
-    background: var(--base-green-2); 
-    display: inline-block; 
-    width: 0.5rem; 
+    content: "";
+    background: var(--base-green-2);
+    display: inline-block;
+    width: 0.5rem;
     height: 0.5rem;
-    margin: 0 0.5rem 0.125rem -1rem; 
+    margin: 0 0.5rem 0.125rem -1rem;
   }
 
   div {
@@ -95,12 +93,14 @@
   }
 
   @media only screen and (max-width: 700px) {
-    p, ul, li {
+    p,
+    ul,
+    li {
       font-size: 16px;
     }
 
     li::before {
-      margin: 0 0.5rem 0.125rem 0rem; 
+      margin: 0 0.5rem 0.125rem 0rem;
     }
   }
 </style>

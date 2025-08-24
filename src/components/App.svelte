@@ -140,7 +140,7 @@
 
   <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>
     {#each steps as { text, image }, i}
-      {#if i < steps.length - 13}
+      {#if i < steps.length - 13 && i !== 4}
         <div
           class="step"
           class:active={step === i || (i === 0 && step === undefined)}
@@ -302,6 +302,15 @@
 <Footer />
 
 <style>
+  @font-face {
+    font-family: "Outfit";
+    src: url("/assets/fonts/new/Outfit-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900; /* Variable Font deckt alle Stärken ab */
+    font-style: normal;
+  }
+  body {
+    font-family: "Outfit", sans-serif;
+  }
   .step {
     font-size: 18px;
     width: 28em; /* breiter */
@@ -337,7 +346,7 @@
     height: 100vh;
     z-index: 0;
     color: var(--color-body-light);
-    font-family: var(--mono);
+    font-family: "Outfit", sans-serif;
   }
   .scroll-container {
     width: 100%;

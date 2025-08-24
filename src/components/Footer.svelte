@@ -38,9 +38,9 @@
 
 <style>
   footer {
-    background-color: #F2E8DF; /* deine gewünschte Hintergrundfarbe */
+    background-color: #f2e8df; /* deine gewünschte Hintergrundfarbe */
     color: var(--color-body);
-    font-family: var(--sans);
+    font-family: "Outfit", sans-serif;
     padding: 3em 1em;
     margin-top: 10em;
     text-align: center;
@@ -50,4 +50,3 @@
     min-height: 50px; /* sorgt dafür, dass der Footer sichtbar bleibt */
   }
 </style>
-
