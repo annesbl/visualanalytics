@@ -2,11 +2,9 @@
   import Hero from "./Hero.svelte";
   import Scrolly from "./helpers/Scrolly.svelte";
   import Screenshots from "./Screenshots.svelte";
-  import Lenna from "./Lenna.svelte";
   import Conclusion from "./Conclusion.svelte";
   import Footer from "./Footer.svelte";
   import copy from "$data/doc.json";
-  import lennaPixels from "$data/lennaPixels.json";
   import _ from "lodash";
   import { onMount } from "svelte";
   import Quiz from "./Quiz.svelte";
