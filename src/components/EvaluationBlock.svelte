@@ -24,10 +24,20 @@
   }
 
   function updateAvatars() {
-    avatars = samplePeople(selectedValue).map((p) => ({
+    const people = samplePeople(selectedValue);
+
+    // echte Personen abbilden
+    let mapped = people.map((p) => ({
       id: p.id,
       personality: p.Personality.toLowerCase().startsWith("extro") ? "extro" : "intro"
     }));
+
+    // fehlende Plätze mit neutralen Avataren auffüllen
+    while (mapped.length < 21) {
+      mapped.push({ id: `empty-${mapped.length}`, personality: "none" });
+    }
+
+    avatars = mapped;
   }
 
   $: selectedValue, updateAvatars();
@@ -168,5 +178,8 @@
   .me-avatar img {
     width: 28px;
     height: 28px;
+  }
+  .avatar-box.none {
+    background: #f2e8df; /* neutraler Hintergrund, wie am Anfang */
   }
 </style>
