@@ -37,14 +37,14 @@
       <input
         type="range"
         min="0"
-        max="24"
+        max="11"
         bind:value={userAnswers.Time_spent_Alone}
         class="custom-slider"
       />
       {#if userAnswers.Time_spent_Alone !== ""}
         <span
           class="slider-value"
-          style="left: {getSliderPosition(userAnswers.Time_spent_Alone, 0, 24)}%;"
+          style="left: {getSliderPosition(userAnswers.Time_spent_Alone, 0, 11)}%;"
         >
           {userAnswers.Time_spent_Alone}
         </span>
