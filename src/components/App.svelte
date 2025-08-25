@@ -139,29 +139,29 @@
   </div>
 
   <div class="content-layer">
-  <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>
-    {#each steps as { text, image }, i}
-      {#if i < steps.length - 13 && i !== 4}
-        <div
-          class="step"
-          class:active={step === i || (i === 0 && step === undefined)}
-          class:left={i < 4 && i % 2 === 0}
-          class:right={i < 4 && i % 2 === 1}
-        >
-          {#if image}
-            <img src={`/assets/img/story/${image}.png`} alt={image} />
-          {/if}
-          <p>{@html text}</p>
-        </div>
-      {/if}
+    <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>
+      {#each steps as { text, image }, i}
+        {#if i < steps.length - 13 && i !== 4}
+          <div
+            class="step"
+            class:active={step === i || (i === 0 && step === undefined)}
+            class:left={i < 4 && i % 2 === 0}
+            class:right={i < 4 && i % 2 === 1}
+          >
+            {#if image}
+              <img src={`/assets/img/story/${image}.png`} alt={image} />
+            {/if}
+            <p>{@html text}</p>
+          </div>
+        {/if}
 
-      {#if i === 3}
-        <div class="step quiz-step">
-          <Quiz on:quizComplete={handleQuizComplete} />
-        </div>
-      {/if}
-    {/each}
-  </Scrolly>
+        {#if i === 3}
+          <div class="step quiz-step">
+            <Quiz on:quizComplete={handleQuizComplete} />
+          </div>
+        {/if}
+      {/each}
+    </Scrolly>
   </div>
 </div>
 
@@ -374,7 +374,7 @@
   .scroll-container {
     width: 100%;
     position: relative;
-    isolation: isolate; 
+    isolation: isolate;
   }
 
   @media only screen and (max-width: 700px) {
@@ -454,14 +454,17 @@
   header,
   footer {
     position: relative;
-    z-index: 2;   /* über .sticky (0) und den Bildern */
+    z-index: 2; /* über .sticky (0) und den Bildern */
   }
 
-
-/* Text-/Scrolly-Ebene */
-.content-layer {
-  position: relative;
-  z-index: 1;            /* immer über .sticky */
-}
-
+  /* Text-/Scrolly-Ebene */
+  .content-layer {
+    position: relative;
+    z-index: 1; /* immer über .sticky */
+  }
+  .evaluation-step {
+    position: relative; /* wichtig, damit top/left wirken */
+    left: 30px; /* Standard: keine Verschiebung */
+    top: 400px; /* Standard: keine Verschiebung */
+  }
 </style>
