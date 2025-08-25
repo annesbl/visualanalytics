@@ -96,7 +96,7 @@
     grid-template-columns: repeat(7, 80px);
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
   }
 
   .avatar-box {
@@ -184,12 +184,12 @@
   }
   .me-avatar {
     position: absolute;
-    top: -7px; /* über dem Slider platzieren */
+    top: 5px; /* über dem Slider platzieren */
     transform: translateX(-50%);
-    background: transparent; /* deine Wunschfarbe */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    background: #e9dfd7; /* deine Wunschfarbe */
+    border-radius: 10%;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
