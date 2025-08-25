@@ -8,6 +8,32 @@ export const colors = [
   baseColors.base["blue-1"],
   baseColors.base["tan-1"]
 ];
+// zufällige, NICHT überlappende Positionen erzeugen
+function generateNonOverlappingPositions(count, maxX, maxY, size, gap = 24) {
+  const spots = [];
+  const minCenterDist = size + gap;          // Abstand zwischen Mittelpunkten
+  const maxAttempts = 2000;
+
+  let attempts = 0;
+  while (spots.length < count && attempts < maxAttempts) {
+    // zufällige linke/obere Ecke
+    const x = _.random(0, Math.max(0, maxX));
+    const y = _.random(0, Math.max(0, maxY));
+
+    const cx = x + size / 2;
+    const cy = y + size / 2;
+
+    const ok = spots.every(p => {
+      const pcx = p.x + size / 2;
+      const pcy = p.y + size / 2;
+      return Math.hypot(pcx - cx, pcy - cy) >= minCenterDist;
+    });
+
+    if (ok) spots.push({ x, y });
+    attempts++;
+  }
+  return spots;
+}
 
 export const getOrigins = (width, height) => {
   const startX = width * 0.2;
@@ -40,11 +66,12 @@ export const getDestinations = (key, width, height, finalSize) => {
       { x: widthAvailable * (4 / 5) - imageSpace / 2 + 50, y: height * (4 / 5) - imageSpace - 50 }
     ];
   } else if (type === "memes") {
-    return [...new Array(5).keys()].map((d) => ({
-      x: _.random(0, width * 0.8 - finalSize),
-      y: _.random(0, height - finalSize)
-    }));
-  } else if (type === "lennas") {
+  // Zufällig, aber ohne Überlappung
+  const maxX = width * 0.8 - finalSize;  // wie vorher: nur 70–80% der Breite nutzen
+  const maxY = height - finalSize;
+
+  return generateNonOverlappingPositions(5, maxX, maxY, finalSize, 30);
+} else if (type === "lennas") {
     return [
       { x: widthAvailable / 5 - imageSpace, y: height / 5 - imageSpace },
       { x: widthAvailable * (4 / 5) - imageSpace + 50, y: height / 5 - imageSpace - 50 },

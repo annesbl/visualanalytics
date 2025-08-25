@@ -108,4 +108,32 @@ $: finalSize = $viewport.width > 700 ? 150 : 90;
       height: 120px;
     }
   }
+
+  /* sobald App.svelte .hide-avatars auf die sticky-Ebene setzt,
+   werden nur die Gesichter versteckt – Text/Scrolly bleiben */
+:global(.hide-avatars) .images {
+  display: none !important;
+}
+
+/* --- Avatar-Layer IMMER hinter dem Text halten --- */
+.images {
+  position: relative;   /* eigener Kontext für z-index der Kinder */
+  z-index: 0;           /* Container liegt unten */
+}
+
+.images img {
+  position: absolute;   /* wie bisher, aber sicher unten halten */
+  z-index: 0 !important;/* NIE vor Text drängeln */
+  pointer-events: none; /* blockiert keine Klicks/Scroll auf Textboxen */
+}
+
+/* Falls Varianten Klassen haben: auch unten halten */
+.images img.opaque,
+.images img.faded,
+.images img.big,
+.images img.delayed-opacity,
+.images img.delayed-growth {
+  z-index: 0 !important;
+}
+
 </style>

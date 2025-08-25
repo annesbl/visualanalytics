@@ -120,7 +120,7 @@
 <Hero {step} />
 <QuestionBlock />
 <div class="scroll-container">
-  <div class="sticky">
+  <div class="sticky" class:hide-avatars={step >= 2}>
     <!-- nur Step 0 sichtbar -->
     <Screenshots mount={step === 0} visible={step === 0} key="memes-0" />
 
@@ -138,6 +138,7 @@
     <Screenshots mount={step === 5} visible={step === 5} key="lennas" />
   </div>
 
+  <div class="content-layer">
   <Scrolly bind:value={step} styles={"display: flex; flex-direction: column; width: 100%;"}>
     {#each steps as { text, image }, i}
       {#if i < steps.length - 13 && i !== 4}
@@ -161,6 +162,7 @@
       {/if}
     {/each}
   </Scrolly>
+  </div>
 </div>
 
 <section id="results-section" class="results">
@@ -340,6 +342,7 @@
     background: var(--scroll-step-background);
     border-radius: 8px; /* runde Ecken */
     align-self: flex-end;
+    position: relative;
     z-index: 1000;
     opacity: 1;
   }
@@ -366,10 +369,12 @@
     z-index: 0;
     color: var(--color-body-light);
     font-family: "Outfit", sans-serif;
+    z-index: 0;
   }
   .scroll-container {
     width: 100%;
     position: relative;
+    isolation: isolate; 
   }
 
   @media only screen and (max-width: 700px) {
@@ -443,26 +448,20 @@
   .me-avatar.in-place {
     transform: translateY(120px);
   }
-  .step.evaluation-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: -25rem; /* Abstand zwischen den Fragen */
-    justify-content: center;
-    background: none !important; /* Hintergrund entfernen */
-    box-shadow: none !important; /* falls Schatten noch da wäre */
-    border-radius: 0 !important; /* Ecken neutralisieren */
-    padding: 0;
-    margin-top: 20rem;
+
+  .quiz-step,
+  .results,
+  header,
+  footer {
+    position: relative;
+    z-index: 2;   /* über .sticky (0) und den Bildern */
   }
 
-  .question-textblock {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    max-width: 400px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 0rem;
-    text-align: center;
-  }
+
+/* Text-/Scrolly-Ebene */
+.content-layer {
+  position: relative;
+  z-index: 1;            /* immer über .sticky */
+}
+
 </style>
