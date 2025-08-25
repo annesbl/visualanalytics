@@ -133,12 +133,15 @@
     height: 40px;
     background: transparent;
     border: none;
+    position: relative;
   }
 
   .custom-slider::-webkit-slider-runnable-track {
     height: 40px;
-    background: url("/assets/img/balken.svg") no-repeat center;
-    background-size: contain;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #e6a195, #6b364c);
+    /* WICHTIG: volle Breite nutzen */
+    background-size: 100% 100%;
   }
 
   .custom-slider::-webkit-slider-thumb {
@@ -147,11 +150,30 @@
     height: 25px;
     border-radius: 50%;
     background: #fff;
-    border: 1px solid #c9a6a6;
+    border: 2px solid #c9a6a6;
     cursor: pointer;
     margin-top: 7.5px;
+
+    /* sorgt dafür, dass der Thumb nicht mehr "übersteht" */
+    position: relative;
+    z-index: 2;
   }
 
+  /* Firefox */
+  .custom-slider::-moz-range-track {
+    height: 40px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #e6a195, #6b364c);
+  }
+
+  .custom-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #c9a6a6;
+    cursor: pointer;
+  }
   .slider-value {
     position: absolute;
     top: 45px;

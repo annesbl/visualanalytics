@@ -9,8 +9,8 @@
   const buckets = [
     { label: "0–4", min: 0, max: 4 },
     { label: "5–9", min: 5, max: 9 },
-    { label: "10–14", min: 10, max: 14 },
-    { label: "15–19", min: 15, max: 19 }
+    { label: "10–15", min: 10, max: 15 }
+    //{ label: "15–20", min: 15, max: 20 }
   ];
 
   function samplePeople(min, max) {
