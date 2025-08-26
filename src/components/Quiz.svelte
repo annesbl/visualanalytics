@@ -73,7 +73,7 @@
 
   <!-- 3 -->
   <div class="question">
-    <p>How often do you attend social events?</p>
+    <p>From a scale of 1- 10: How often do you attend social events?</p>
     <div class="slider-wrapper">
       <input
         type="range"
@@ -158,7 +158,7 @@
 
   <!-- 7 -->
   <div class="question">
-    <p>How often do you post online?</p>
+    <p>From a scale of 1- 10: How often do you post online?</p>
     <div class="slider-wrapper">
       <input
         type="range"
