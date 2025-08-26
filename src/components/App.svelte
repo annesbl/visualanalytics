@@ -136,6 +136,14 @@
 
     <!-- z.B. nur Step 5 sichtbar -->
     <Screenshots mount={step === 5} visible={step === 5} key="lennas" />
+
+    <!-- Dein Avatar -->
+    {#if step >= 2 && step < 6}
+      <div class="me-wrapper">
+        <img src="/assets/img/me.svg" alt="Me" class="me-avatar-big" />
+        <p class="step-label">this is you</p>
+      </div>
+    {/if}
   </div>
 
   <div class="content-layer">
@@ -166,7 +174,7 @@
 </div>
 
 <section id="results-section" class="results">
-  <h2>this is you!<br />Let’s see how you are keeping up with other people</h2>
+  <h2><br />Let’s see how you are keeping up with other people</h2>
 
   <!-- Dein Avatar -->
   <div class="avatar-container">
@@ -324,7 +332,7 @@
 <style>
   @font-face {
     font-family: "Outfit";
-    src: url("/assets/fonts/new/Outfit-VariableFont_wght.ttf") format("truetype");
+    src: url("/static/assets/fonts/new/Outfit-VariableFont_wght.ttf") format("truetype");
     font-weight: 100 900; /* Variable Font deckt alle Stärken ab */
     font-style: normal;
   }
@@ -483,12 +491,12 @@
   }
 
   .legend-box .red {
-    color: #e44; /* extrovert rot */
+    color: rgba(253, 169, 169, 0.8); /* extrovert rot */
     font-weight: 600;
   }
 
   .legend-box .blue {
-    color: #36f; /* introvert blau */
+    color: rgba(195, 213, 255, 0.8); /* introvert blau */
     font-weight: 600;
   }
   .evaluation-block {
@@ -508,5 +516,36 @@
     font-size: 1.4rem;
     line-height: 1.6;
     color: var(--color-body); /* gleiche Schriftfarbe wie sonst */
+  }
+  .me-wrapper {
+    position: absolute;
+    top: 50%; /* Höhe in der Mitte vom Viewport */
+    left: 8%; /* linksbündig */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10; /* über den Hintergrundbildern */
+    transform: translateY(-50%);
+  }
+
+  .me-avatar-big {
+    width: 250px; /* größer */
+    height: 250px;
+    object-fit: contain;
+  }
+
+  .me-label {
+    font-family: "Outfit", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 1rem !important;
+    line-height: 1.6;
+    color: var(--color-body) !important;
+  }
+  .step-label {
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--color-body);
   }
 </style>
