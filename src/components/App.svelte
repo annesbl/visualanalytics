@@ -311,6 +311,12 @@
   max={10}
   userAnswer={userAnswers.Post_frequency}
 />
+<div class="final-conclusion">
+  <p>
+    In the end, introverts and extroverts are just two sides of the same coin. What really matters
+    is finding balance and staying true to yourself.
+  </p>
+</div>
 
 <Conclusion {step} />
 <Footer />
@@ -494,5 +500,13 @@
    -> nur unten Abstand, keinen zusätzlichen oben */
   .evaluation-block + .evaluation-block {
     margin-top: 0;
+  }
+  .final-conclusion {
+    margin: 10rem auto; /* Abstand zum Rest */
+    text-align: center; /* mittig ausgerichtet */
+    max-width: 50rem; /* damit es nicht zu breit läuft */
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--color-body); /* gleiche Schriftfarbe wie sonst */
   }
 </style>
