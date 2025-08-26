@@ -548,4 +548,16 @@
     line-height: 1.6;
     color: var(--color-body);
   }
+  :global(body),
+  :global(p),
+  :global(span),
+  :global(.step),
+  :global(.legend-box),
+  :global(.evaluation-block),
+  :global(.final-conclusion) {
+    font-family: "Outfit", sans-serif !important;
+    font-weight: 400;
+    color: var(--color-body);
+    font-size: 1.3rem;
+  }
 </style>
