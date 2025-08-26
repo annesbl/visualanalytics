@@ -321,9 +321,13 @@
 />
 <div class="final-conclusion">
   <p>
-    In the end, introverts and extroverts are just two sides of the same coin. What really matters
-    is finding balance and staying true to yourself.
+    The answers and data show that personality traits are diverse and cannot always be placed into clear categories. 
   </p>
+  <p>─────────</p>
+  <p>
+    This project is meant to encourage reflection on where you might fall and to recognize the variety of human behavior.
+  </p>
+  <p>Thank you for joining us!</p>
 </div>
 
 <Conclusion {step} />
