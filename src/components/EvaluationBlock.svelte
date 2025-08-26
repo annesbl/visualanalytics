@@ -48,7 +48,10 @@
 </script>
 
 <div class="evaluation-block">
-  <!--<h3>{question}</h3>-->
+  <!-- Frage in weißer Box -->
+  <div class="question-textblock">
+    <p>{question}</p>
+  </div>
 
   <!-- Avatar Grid -->
   <div class="grid">
@@ -63,14 +66,12 @@
   <div class="slider-wrapper">
     <input type="range" {min} {max} bind:value={selectedValue} class="custom-slider" />
 
-    <!-- Dein eigener Avatar bleibt fix an deiner Antwort -->
     {#if userAnswer !== null}
       <div class="me-avatar" style="left: {getSliderPosition(userAnswer, min, max)}%;">
         <img src="/assets/img/Me.svg" alt="Me" />
       </div>
     {/if}
 
-    <!-- Aktuelle Auswahl-Anzeige -->
     {#if selectedValue !== ""}
       <span class="slider-value" style="left: {getSliderPosition(selectedValue, min, max)}%;">
         {selectedValue}
@@ -84,6 +85,8 @@
     margin: 30rem auto;
     text-align: center;
     width: 80%;
+    /*margin-bottom: 30rem;
+    margin-top: 30rem;*/
   }
 
   h3 {
@@ -203,5 +206,15 @@
   }
   .avatar-box.none {
     background: #f2e8df; /* neutraler Hintergrund, wie am Anfang */
+  }
+  .question-textblock {
+    background: var(--scroll-step-background);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    margin: 0 auto 2rem auto; /* zentriert, Abstand nach unten */
+    width: fit-content;
+    text-align: left;
   }
 </style>

@@ -1,8 +1,8 @@
 <script>
   import dataset from "$data/personality_dataset.json";
 
-  export let question = "How is the size of your friends cycle?";
-  export let field = "Friends_circle_size";
+  export let question = "How big is your circle of close friends?";
+  export let field = "Friends_cycle_size"; // ggf. Tippfehler angleichen
   export let userAnswer = 8; // später aus Quiz übergeben
 
   // Kategorien
@@ -10,7 +10,6 @@
     { label: "0–4", min: 0, max: 4 },
     { label: "5–9", min: 5, max: 9 },
     { label: "10–15", min: 10, max: 15 }
-    //{ label: "15–20", min: 15, max: 20 }
   ];
 
   function samplePeople(min, max) {
@@ -33,7 +32,10 @@
 </script>
 
 <div class="evaluation-block">
-  <h3>{question}</h3>
+  <!-- Frage in weißer Box -->
+  <div class="question-textblock">
+    <p>{question}</p>
+  </div>
 
   <div class="circle-row">
     {#each grouped as bucket}
@@ -43,6 +45,9 @@
             <img src="/assets/img/Me.svg" alt="You" />
           {/if}
         </div>
+        <!-- Label unterhalb des Kreises -->
+        <div class="bucket-label">{bucket.label} friends</div>
+
         <div class="avatars">
           {#each bucket.avatars as person}
             <div class="avatar-box {person.personality}">
@@ -60,11 +65,21 @@
     margin: 30rem auto;
     text-align: center;
     width: 95%;
+    /*margin-bottom: 30rem;
+    margin-top: 30rem;*/
   }
 
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+  .question-textblock {
+    background: var(--scroll-step-background);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    position: relative; /* wichtig, damit top/left wirken */
+    left: 10px; /* Standard: keine Verschiebung */
+    top: -50px;
+    width: 500px;
+    text-align: left;
   }
 
   .circle-row {
@@ -78,7 +93,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.6rem;
   }
 
   .circle {
@@ -98,6 +113,13 @@
 
   .circle.me {
     border-color: #c9a6a6;
+  }
+
+  .bucket-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #444;
   }
 
   .avatars {

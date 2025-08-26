@@ -35,7 +35,9 @@
 </script>
 
 <div class="evaluation-block">
-  <h3>{question}</h3>
+  <div class="question-textblock">
+    <p>{question}</p>
+  </div>
 
   <div class="yesno-wrapper">
     <!-- NO Block -->
@@ -69,6 +71,8 @@
     margin: 4rem auto;
     text-align: center;
     width: 90%;
+    /* margin-bottom: 30rem;
+    margin-top: 30rem;*/
   }
 
   h3 {
@@ -126,5 +130,17 @@
     font-size: 1rem;
     font-weight: bold;
     cursor: default;
+  }
+  .question-textblock {
+    background: var(--scroll-step-background);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    left: -5px;
+    top: -70px;
+    width: 520px;
+    font-size: 1.2rem;
+    text-align: left;
   }
 </style>

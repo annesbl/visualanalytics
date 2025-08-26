@@ -250,13 +250,18 @@
       {/each}
     </div>
   </div>
+  <!-- Legende für Farben -->
+  <div class="legend-boxes">
+    <div class="legend-box">
+      <span class="red">Red</span> means extrovert
+    </div>
+    <div class="legend-box">
+      <span class="blue">Blue</span> means introvert
+    </div>
+  </div>
 </section>
 <!-- Erste Auswertung -->
-<div class="step evaluation-step">
-  <div class="question-textblock">
-    <p>How many hours of the day do you spend alone?</p>
-  </div>
-</div>
+
 <EvaluationBlock
   field="Time_spent_Alone"
   min={0}
@@ -269,11 +274,7 @@
   field="Stage_fear"
 />
 <!-- dritte Auswertung -->
-<div class="step evaluation-step">
-  <div class="question-textblock">
-    <p>How often do you attend social events?</p>
-  </div>
-</div>
+
 <EvaluationBlock
   question="How often do you attend social events?"
   field="Social_event_attendance"
@@ -282,11 +283,7 @@
   userAnswer={userAnswers.Social_event_attendance}
 />
 <!-- vierte Auswertung -->
-<div class="step evaluation-step">
-  <div class="question-textblock">
-    <p>How often do you go outside in a week?</p>
-  </div>
-</div>
+
 <EvaluationBlock
   question="How often do you go outside in a week?"
   field="Going_outside"
@@ -301,16 +298,12 @@
 />
 <!-- freunde Auswertung -->
 <EvaluationBlockFriends
-  question="How is the size of your friends cycle?"
+  question="How big is your circle of close friends??"
   field="Friends_circle_size"
   userAnswer={userAnswers.Friends_circle_size}
 />
 <!-- siebte Auswertung -->
-<div class="step evaluation-step">
-  <div class="question-textblock">
-    <p>How often do you post online?</p>
-  </div>
-</div>
+
 <EvaluationBlock
   question="How often do you post online?"
   field="Post_frequency"
@@ -466,5 +459,40 @@
     position: relative; /* wichtig, damit top/left wirken */
     left: 30px; /* Standard: keine Verschiebung */
     top: 400px; /* Standard: keine Verschiebung */
+  }
+  .legend-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 5rem; /* Abstand zwischen den beiden Boxen */
+    margin-top: 6rem; /* Abstand über der Legende */
+  }
+
+  .legend-box {
+    background: var(--scroll-step-background);
+    padding: 2rem 2.5rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .legend-box .red {
+    color: #e44; /* extrovert rot */
+    font-weight: 600;
+  }
+
+  .legend-box .blue {
+    color: #36f; /* introvert blau */
+    font-weight: 600;
+  }
+  .evaluation-block {
+    margin: 8rem auto; /* gleicher Abstand oben & unten */
+    text-align: center;
+    width: 90%;
+  }
+  /* Wenn ein EvaluationBlock DIREKT auf einen anderen folgt: 
+   -> nur unten Abstand, keinen zusätzlichen oben */
+  .evaluation-block + .evaluation-block {
+    margin-top: 0;
   }
 </style>

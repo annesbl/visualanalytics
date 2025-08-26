@@ -136,7 +136,7 @@
 
   <!-- 6 -->
   <div class="question">
-    <p>How big is your circle of friends?</p>
+    <p>How big is your circle of close friends?</p>
     <div class="slider-wrapper">
       <input
         type="range"
