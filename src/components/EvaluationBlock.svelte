@@ -213,8 +213,11 @@
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     font-size: 1.2rem;
+    position: relative;
+    left: -125px;
+    top: -70px;
     margin: 0 auto 2rem auto; /* zentriert, Abstand nach unten */
-    width: fit-content;
+    width: 520px;
     text-align: left;
   }
 </style>
