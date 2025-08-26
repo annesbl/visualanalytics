@@ -4,7 +4,7 @@
 
 <header>
   <div class="wordmark">
-    <img src="/assets/img/title.svg" alt="Title" class="title-logo" />
+    <img src="/assets/img/neulogo.png" alt="Title" class="title-logo" />
   </div>
 </header>
 
@@ -21,9 +21,10 @@
   margin: 3rem auto;
 }
     .title-logo {
-  width: 80%;        /* nimmt 80% der Bildschirmbreite */
+  width: 50%;        /* nimmt 80% der Bildschirmbreite */
   max-width: 1200px; /* aber nicht breiter als 1200px */
   height: auto;
+  margin-top: 5rem
 }
 
   .wordmark a {

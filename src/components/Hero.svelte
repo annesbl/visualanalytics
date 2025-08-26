@@ -29,7 +29,7 @@
 {#if titleVisible}
   <div class="hero" transition:fade>
     <!-- Dein SVG-Logo als Titel -->
-    <img src="assets/img/title.svg" alt="Title" class="hero-title" />
+<img src="/assets/img/neulogo.png" alt="Title" class="hero-title" />
   </div>
 {/if}
 
