@@ -174,11 +174,7 @@
 </div>
 
 <section id="results-section" class="results">
-<<<<<<< HEAD
-  <h2><br />Let’s see how you are keeping up with other people</h2>
-=======
   <h2><b>this is you!</b> <p>Let’s see how you are keeping up with other people</p></h2>
->>>>>>> fefc09f (text bold)
 
   <!-- Dein Avatar -->
   <div class="avatar-container">
