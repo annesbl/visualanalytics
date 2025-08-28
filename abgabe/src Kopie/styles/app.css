@@ -1,0 +1,45 @@
+@import "variables.css";
+@import "normalize.css";
+@import "font.css";
+@import "reset.css";
+
+/* colors defined in variables.css */
+:root {
+  /* font */
+  --sans: "National 2 Web", Helvetica, Arial, sans-serif;
+  --serif: "Tiempos Text Web", Georgia, Times, serif;
+  --mono: "Space Mono", Menlo, Consolas, Monaco, "Courier New", monospace;
+
+  /* z-index */
+  --z-bottom: -100;
+  --z-middle: 0;
+  --z-top: 100;
+  --z-overlay: 1000;
+
+  /* presets */
+  --border-radius: 4px;
+  --font-body: var(--sans);
+  --font-form: var(--sans);
+  --background-body: var(--color-bg);
+  --color-body: var(--base-off-black);
+  --color-body-light: var(--base-blue-1);
+  --scroll-step-background: var(--base-tan-4);
+  --chart-text: var(--base-tan-1);
+
+  --color-selection: var(--base-green-2);
+
+  --background-form: var(--base-off-white);
+  --color-placeholder: var(--base-gray-dark);
+  --color-link: var(--base-purple);
+  --color-focus: var(--base-red);
+  --color-form: var(--base-off-black);
+  --color-border: var(--base-gray-light);
+  --color-highlight: var(--base-yellow);
+}
+html, body {
+  background-color: var(--background-body) !important;
+}
+
+.bar-chart {
+  display: none !important; /* entfernt den Chart komplett */
+}

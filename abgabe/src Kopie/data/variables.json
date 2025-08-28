@@ -1,0 +1,30 @@
+{
+  "base": {
+    "off-black": "#282828",
+    "green-1": "#79A695",
+    "green-2": "#A5F2D5",
+    "blue-1": "#586FA6",
+    "blue-2": "#8DABF2",
+    "red": "#A64153",
+    "purple-0": "#220619",
+    "purple-1": "#390A29",
+    "purple-2": "#440D31",
+    "purple-3": "#591642",
+    "orange-1": "#D96666",
+    "orange-2": "#F29F80",
+    "tan-1": "#F2C299",
+    "tan-2": "#FEDEC3",
+    "tan-3": "#FFF2E8",
+    "tan-4": "#FFFAF5",
+    "white": "#fff"
+  },
+  "categorical": {
+    "blue": "#4477AA",
+    "red": "#EE6677",
+    "green": "#228833",
+    "yellow": "#CCBB44",
+    "cyan": "#66CCEE",
+    "purple": "#AA3377",
+    "gray": "#BBBBBB"
+  }
+}
