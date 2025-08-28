@@ -141,7 +141,7 @@
     {#if step >= 2 && step < 6}
       <div class="me-wrapper">
         <img src="/assets/img/me.svg" alt="Me" class="me-avatar-big" />
-        <p class="step-label">this is you</p>
+        <p class="step-label">&larr;</p>
       </div>
     {/if}
   </div>
@@ -174,7 +174,10 @@
 </div>
 
 <section id="results-section" class="results">
-  <h2><b>this is you!</b> <p>Let’s see how you are keeping up with other people</p></h2>
+  <h2>
+    <b>this is you!</b>
+    <p>Let’s see how you are keeping up with other people</p>
+  </h2>
 
   <!-- Dein Avatar -->
   <div class="avatar-container">
@@ -321,11 +324,13 @@
 />
 <div class="final-conclusion">
   <p>
-    The answers and data show that personality traits are diverse and cannot always be placed into clear categories. 
+    The answers and data show that personality traits are diverse and cannot always be placed into
+    clear categories.
   </p>
   <p>─────────</p>
   <p>
-    This project is meant to encourage reflection on where you might fall and to recognize the variety of human behavior.
+    This project is meant to encourage reflection on where you might fall and to recognize the
+    variety of human behavior.
   </p>
   <p>Thank you for joining us!</p>
 </div>
